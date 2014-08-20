@@ -35,6 +35,7 @@ import it.unimi.dsi.fastutil.objects.ObjectIterator;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -300,7 +301,7 @@ public abstract class DictionaryValuesWriter extends ValuesWriter {
         int id = binaryDictionaryContent.getInt(v);
         if (id == -1) {
           id = binaryDictionaryContent.size();
-          binaryDictionaryContent.put(v, id);
+          binaryDictionaryContent.put(copy(v), id);
           // length as int (4 bytes) + actual bytes
           dictionaryByteSize += 4 + v.length();
         }
@@ -355,6 +356,11 @@ public abstract class DictionaryValuesWriter extends ValuesWriter {
         plainValuesWriter.writeBytes(reverseDictionary[id]);
       }
     }
+
+    protected static Binary copy(Binary binary) {
+      return Binary.fromByteArray(
+          Arrays.copyOf(binary.getBytes(), binary.length()));
+    }
   }
 
   /**
@@ -382,7 +388,7 @@ public abstract class DictionaryValuesWriter extends ValuesWriter {
         int id = binaryDictionaryContent.getInt(value);
         if (id == -1) {
           id = binaryDictionaryContent.size();
-          binaryDictionaryContent.put(value, id);
+          binaryDictionaryContent.put(copy(value), id);
           dictionaryByteSize += length;
         }
         encodedValues.add(id);
