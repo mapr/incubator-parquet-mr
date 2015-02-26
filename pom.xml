@@ -3,7 +3,7 @@
 
   <groupId>com.twitter</groupId>
   <artifactId>parquet</artifactId>
-  <version>1.5.1-drill-r6</version>
+  <version>1.5.1-drill-r7</version>
   <packaging>pom</packaging>
 
   <name>Parquet MR</name>
@@ -115,12 +115,12 @@
     <module>parquet-pig</module>
     <module>parquet-pig-bundle</module>
     <module>parquet-protobuf</module>
-    <module>parquet-scrooge</module>
+    <!--<module>parquet-scrooge</module>-->
     <module>parquet-thrift</module>
     <module>parquet-test-hadoop2</module>
     <module>parquet-hadoop-bundle</module>
-    <module>parquet-hive</module>
-    <module>parquet-hive-bundle</module>
+    <!--<module>parquet-hive</module>-->
+    <!--<module>parquet-hive-bundle</module>-->
     <module>parquet-tools</module>
   </modules>
 
